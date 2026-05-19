@@ -1,0 +1,9 @@
+{{- /* figure.html - Captioned figure shortcode */ -}}
+<figure>
+  {{- if .Get "src" }}
+  <img src="{{ .Get "src" | absURL }}" alt="{{ .Get "alt" }}" {{ if .Get "width" }}width="{{ .Get "width" }}"{{ end }} {{ if .Get "height" }}height="{{ .Get "height" }}"{{ end }} loading="lazy" decoding="async">
+  {{- end }}
+  {{- if .Get "caption" }}
+  <figcaption>{{ .Get "caption" }}</figcaption>
+  {{- end }}
+</figure>

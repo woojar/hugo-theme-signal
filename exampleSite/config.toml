@@ -1,0 +1,28 @@
+baseURL = "https://example.com/"
+title = "My Blog — Signal Theme Demo"
+theme = "signal"
+
+[params]
+  author = "Your Name"
+  description = "A technical blog powered by the Signal Hugo theme"
+
+[params.authorBio]
+  enable = true
+  avatar = ""
+
+[params.share]
+  enable = true
+
+[menus]
+  [[menus.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menus.main]]
+    name = "Posts"
+    url = "/posts/"
+    weight = 2
+  [[menus.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3

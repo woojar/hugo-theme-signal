@@ -1,0 +1,17 @@
+{{- /* breadcrumbs.html - Breadcrumb Navigation */ -}}
+{{- if not .Site.Params.disableBreadcrumb }}
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+    {{- if .IsPage }}
+    {{- $section := .CurrentSection }}
+    {{- if and $section (ne $section.Title "Posts") }}
+    <li><a href="{{ $section.RelPermalink }}">{{ $section.Title }}</a></li>
+    {{- else if eq $section.Title "Posts" }}
+    <li><a href="{{ "posts/" | relURL }}">Posts</a></li>
+    {{- end }}
+    {{- end }}
+    <li aria-current="page">{{ .Title }}</li>
+  </ol>
+</nav>
+{{- end }}

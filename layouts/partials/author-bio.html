@@ -1,0 +1,27 @@
+{{- /* author-bio.html - Author Bio Section */ -}}
+{{- if .Site.Params.authorBio.enable }}
+<div class="author-bio">
+  <div class="author-avatar">
+    {{- if .Site.Params.authorBio.avatar }}
+    <img src="{{ .Site.Params.authorBio.avatar | absURL }}" alt="{{ .Site.Params.author }}" width="80" height="80" loading="lazy">
+    {{- else }}
+    <div class="author-avatar-placeholder">{{ substr .Site.Params.author 0 1 }}</div>
+    {{- end }}
+  </div>
+  <div class="author-info">
+    <h4 class="author-name">{{ .Site.Params.author }}</h4>
+    {{- if .Site.Params.authorBio.bio }}
+    <p class="author-description">{{ .Site.Params.authorBio.bio }}</p>
+    {{- end }}
+    <div class="author-links">
+      {{- with .Site.Params.social }}
+        {{- range . }}
+        <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .name }}">
+          {{ .name }}
+        </a>
+        {{- end }}
+      {{- end }}
+    </div>
+  </div>
+</div>
+{{- end }}

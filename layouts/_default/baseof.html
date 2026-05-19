@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}">
+<head>
+  {{ partial "analytics.html" . }}
+  {{ partial "head.html" . }}
+</head>
+<body>
+  <div class="reading-progress" id="readingProgress" role="progressbar" aria-label="Reading progress"></div>
+  <a href="#main" class="skip-link">Skip to content</a>
+  {{ partial "header.html" . }}
+
+  <main class="main-content" id="main" role="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search">
+    <button class="search-close" aria-label="Close search">×</button>
+    <div class="search-modal">
+      <div role="search">
+        <input type="text" class="search-input" placeholder="Search posts..." id="searchInput" autocomplete="off" aria-label="Search posts">
+      </div>
+      <div class="search-results" id="searchResults" aria-live="polite"></div>
+    </div>
+  </div>
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  {{ partial "scripts.html" . }}
+</body>
+</html>

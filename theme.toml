@@ -1,0 +1,41 @@
+name = "Signal"
+license = "MIT"
+licenselink = "https://github.com/woojar/hugo-theme-signal/blob/main/LICENSE"
+description = "A modern, fast, and accessible Hugo blog theme with built-in search, dark mode, reading progress, and Giscus comments. Designed for technical blogs and engineering journals."
+homepage = "https://github.com/woojar/hugo-theme-signal"
+demosite = "https://woojar.com"
+tags = ["blog", "technical", "dark-mode", "search", "comments", "minimal"]
+features = ["search", "dark-mode", "reading-progress", "back-to-top", "social-share", "author-bio", "newsletter", "giscus-comments", "code-highlighting", "pagination", "related-posts", "schema-org", "seo", "rss", "accessible", "print-styles"]
+
+[author]
+  name = "Woojar"
+  homepage = "https://woojar.com"
+
+# Minimum Hugo version required
+min_version = "0.120.0"
+
+# Theme version
+version = "1.0.0"
+
+[params]
+  # Style
+  primary_color = "#2563eb"
+  accent_color = "#10b981"
+  border_radius = 8
+
+  # Features — toggle everything from site config
+  enable_search = true
+  enable_reading_progress = true
+  enable_back_to_top = true
+  enable_dark_mode = true
+
+  # Display
+  recent_posts_count = 5
+  show_word_count = true
+  show_reading_time = true
+  disableBreadcrumb = false
+  disableGitInfo = false
+
+  # Post meta
+  words = "words"
+  min_read = "min read"

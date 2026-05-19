@@ -1,0 +1,126 @@
+{{- /* scripts.html - Theme JavaScript */ -}}
+<script>
+  // Throttle function
+  function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+
+  const backToTop = document.querySelector('.back-to-top');
+  window.addEventListener('scroll', throttle(() => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, 100));
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Reading progress - throttled
+  const readingProgress = document.getElementById('readingProgress');
+  window.addEventListener('scroll', throttle(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    readingProgress.style.width = progress + '%';
+  }, 50));
+
+  // Search functionality
+  const searchToggle = document.querySelector('.search-toggle');
+  const searchOverlay = document.getElementById('searchOverlay');
+  const searchClose = document.querySelector('.search-close');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  let searchIndex = [];
+  let searchLoaded = false;
+
+  async function loadSearchIndex() {
+    if (!searchLoaded) {
+      try {
+        const response = await fetch('/index.json');
+        const data = await response.json();
+        searchIndex = data;
+        searchLoaded = true;
+      } catch (e) {
+        console.error('Failed to load search index');
+      }
+    }
+  }
+
+  // Preload search index on idle
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => loadSearchIndex());
+  } else {
+    setTimeout(loadSearchIndex, 3000);
+  }
+
+  function performSearch(query) {
+    if (!query.trim()) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    if (searchIndex.length === 0) {
+      searchResults.innerHTML = '<div class="search-result"><p>Loading...</p></div>';
+      return;
+    }
+    const lowerQuery = query.toLowerCase();
+    const results = searchIndex.filter(post =>
+      post.title.toLowerCase().includes(lowerQuery) ||
+      (post.summary && post.summary.toLowerCase().includes(lowerQuery)) ||
+      (post.tags && post.tags.some(tag => tag.toLowerCase().includes(lowerQuery)))
+    ).slice(0, 10);
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-result"><p>No results found</p></div>';
+      return;
+    }
+
+    searchResults.innerHTML = results.map(post => `
+      <a href="${post.permalink}" class="search-result">
+        <div class="search-result-title">${post.title}</div>
+        <div class="search-result-excerpt">${post.summary || ''}</div>
+      </a>
+    `).join('');
+  }
+
+  searchToggle.addEventListener('click', async () => {
+    await loadSearchIndex();
+    searchOverlay.classList.add('active');
+    searchInput.focus();
+  });
+
+  searchClose.addEventListener('click', () => {
+    searchOverlay.classList.remove('active');
+  });
+
+  searchOverlay.addEventListener('click', (e) => {
+    if (e.target === searchOverlay) {
+      searchOverlay.classList.remove('active');
+    }
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    performSearch(e.target.value);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+      searchOverlay.classList.remove('active');
+    }
+    if (e.key === '/' && !searchOverlay.classList.contains('active') &&
+        !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchToggle.click();
+    }
+  });
+</script>

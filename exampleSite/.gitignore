@@ -1,0 +1,12 @@
+# Hugo example site
+resources/_gen/
+assets/jsconfig.json
+public/
+hugo_stats.json
+/.hugo_build.lock
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

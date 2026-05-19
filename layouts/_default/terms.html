@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <section class="taxonomy-page">
+    <header class="section-header">
+      <h1>{{ .Title }}</h1>
+      <p class="section-description">{{ len .Pages }} items</p>
+    </header>
+    <div class="taxonomy-terms">
+      {{ range .Pages }}
+        <article class="taxonomy-term">
+          <div class="taxonomy-term-header">
+            <span class="taxonomy-term-icon">#</span>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          </div>
+          <div class="taxonomy-term-count">{{ len .Pages }} posts</div>
+          {{ with .Summary }}
+          <p class="taxonomy-term-desc">{{ . }}</p>
+          {{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

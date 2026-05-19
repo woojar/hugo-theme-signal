@@ -1,0 +1,14 @@
+name = "Signal"
+license = "MIT"
+licenselink = "https://github.com/woojar/hugo-theme-signal/blob/main/LICENSE"
+description = "A modern Hugo blog theme with built-in search, dark mode, and Giscus comments."
+homepage = "https://github.com/woojar/hugo-theme-signal"
+demosite = "https://woojar.com"
+tags = ["blog", "technical", "dark-mode", "search", "comments"]
+features = []
+min_version = "0.120.0"
+version = "1.0.0"
+
+[author]
+  name = "Woojar"
+  homepage = "https://woojar.com"

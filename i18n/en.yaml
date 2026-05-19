@@ -1,0 +1,59 @@
+# English translations
+# Used for i18n support
+
+# Navigation
+nav_home: "Home"
+nav_posts: "Posts"
+nav_tags: "Tags"
+nav_categories: "Categories"
+nav_archive: "Archive"
+nav_about: "About"
+
+# Common
+read_more: "Read more"
+back_to_top: "Back to top"
+search_placeholder: "Search posts..."
+no_results: "No results found"
+loading: "Loading..."
+
+# Post
+min_read: "min read"
+words: "words"
+previous: "Previous"
+next: "Next"
+related_posts: "Related Posts"
+more_posts: "More Posts"
+
+# Taxonomy
+all_tags: "All Tags"
+all_categories: "All Categories"
+posts_count: "{{ .Count }} posts"
+
+# Archive
+archive_title: "Archive"
+browse_by_year: "Browse by year"
+
+# 404
+page_not_found: "Page not found"
+go_home: "Go Home"
+browse_posts: "Browse posts"
+explore_topics: "Explore topics"
+view_categories: "View categories"
+
+# Footer
+footer_title: "Connect"
+footer_copyright: "All rights reserved."
+
+# Time
+january: "January"
+february: "February"
+march: "March"
+april: "April"
+may: "May"
+june: "June"
+july: "July"
+august: "August"
+september: "September"
+october: "October"
+november: "November"
+december: "December"

@@ -1,0 +1,25 @@
+# Hugo module cache
+/resources/_gen/
+/assets/jsconfig.json
+
+# Public output
+/public/
+
+# Hugo working dir
+.hugo_build.lock
+
+# Hugo Pipes processing
+/resources/_dev/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Environment
+.env
+.env.*

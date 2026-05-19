@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="{{ .Site.BaseURL }}">Home</a></li>
+      <li aria-current="page">404</li>
+    </ol>
+  </nav>
+  <div class="error-page">
+    <div class="error-content">
+      <h1>404</h1>
+      <p class="error-message">Oops! The page you're looking for doesn't exist.</p>
+      <p class="error-suggestion">You might want to:</p>
+      <ul class="error-suggestions">
+        <li><a href="{{ .Site.BaseURL }}">Go back to home</a></li>
+        <li><a href="{{ "posts" | relURL }}">Browse all posts</a></li>
+        <li><a href="{{ "tags" | relURL }}">Explore topics</a></li>
+        <li><a href="{{ "categories" | relURL }}">View categories</a></li>
+      </ul>
+    </div>
+  </div>
+  {{ partial "newsletter.html" . }}
+{{ end }}

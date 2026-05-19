@@ -1,0 +1,40 @@
+{{- /* img.html - Optimized image shortcode with Hugo image processing */ -}}
+{{- $src := .Get "src" }}
+{{- $alt := .Get "alt" }}
+{{- $width := .Get "width" }}
+{{- $height := .Get "height" }}
+{{- $caption := .Get "caption" }}
+{{- $class := .Get "class" }}
+
+{{- if $src }}
+{{- $image := .Page.Resources.GetMatch $src }}
+{{- if $image }}
+{{- $widthQ := "" }}
+{{- $heightQ := "" }}
+{{- if $width }}
+  {{- $widthQ = printf "%sx" $width }}
+{{- else }}
+  {{- $widthQ = "800x" }}
+{{- end }}
+{{- $resized := $image.Resize $widthQ }}
+{{- if $height }}
+  {{- $resized = $resized.Fill (printf "%sx%s" $width $height) }}
+{{- end }}
+{{- $webp := $resized.Filter (images.WebP 80) }}
+<figure class="{{ $class }}">
+  <img src="{{ $resized.RelPermalink }}" alt="{{ $alt }}" width="{{ $width | default $resized.Width }}" height="{{ $height | default $resized.Height }}" loading="lazy" decoding="async">
+  {{- if $caption }}
+  <figcaption>{{ $caption }}</figcaption>
+  {{- end }}
+</figure>
+{{- else }}
+<figure class="{{ $class }}">
+  <img src="{{ $src | absURL }}" alt="{{ $alt }}" {{ if $width }}width="{{ $width }}"{{ end }} {{ if $height }}height="{{ $height }}"{{ end }} loading="lazy" decoding="async">
+  {{- if $caption }}
+  <figcaption>{{ $caption }}</figcaption>
+  {{- end }}
+</figure>
+{{- end }}
+{{- else }}
+{{- errorf "img shortcode requires 'src' parameter" }}
+{{- end }}

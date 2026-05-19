@@ -1,0 +1,7 @@
+# social.yaml — Theme default social links
+# Override in your site config under `[params.social]`
+github: ""
+twitter: ""
+email: ""
+linkedin: ""
+youtube: ""
