@@ -17,9 +17,10 @@ theme = "signal"
 
 [params.share]
   enable = true
-  [[params.social]]
-    name = "GitHub"
-    url = "https://github.com/your-username"
+
+[[params.social]]
+  name = "GitHub"
+  url = "https://github.com/your-username"
 
 [menus]
   [[menus.main]]

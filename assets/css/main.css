@@ -596,6 +596,16 @@ nav {
   margin: 0 0 .75rem 0;
 }
 
+.post-preview-content {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.post-preview-content p {
+  margin: 0 0 .75rem 0;
+}
+
 .post-summary-content br {
   display: block;
   margin: 0.5rem 0;
