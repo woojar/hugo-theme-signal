@@ -1,12 +1,16 @@
 <footer class="site-footer">
   <div class="footer-content">
     <div class="footer-section fade-in">
-      <h3>{{ .Site.Params.footerTitle.value | default "Woojar" }}</h3>
-      <p>{{ .Site.Params.footerDescription.value | default "Expert insights and technical knowledge" }}</p>
+      <h3>{{ .Site.Params.footerTitle.value | default "Signal" }}</h3>
+      <p>{{ .Site.Params.footerDescription.value | default "A modern Hugo blog theme for technical writers." }}</p>
     </div>
     <div class="footer-section fade-in">
       <h3>Connect</h3>
-      <p>{{ .Site.Params.author }} · {{ with .Site.Data.social.github }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}</p>
+      <p>{{ .Site.Params.author }}
+        {{- range .Site.Params.social }}
+          {{ if .url }} · <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>{{ end }}
+        {{- end }}
+      </p>
     </div>
     <div class="footer-section fade-in">
       <h3>Site</h3>

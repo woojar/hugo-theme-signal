@@ -34,6 +34,48 @@
     readingProgress.style.width = progress + '%';
   }, 50));
 
+  // Nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  navToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    document.querySelector('.nav-menu').classList.toggle('active');
+    this.setAttribute('aria-expanded', this.classList.contains('active'));
+  });
+
+  // Theme toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+  const themeIcon = themeToggle.querySelector('.theme-icon');
+
+  function setDarkTheme() {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.textContent = '☀️';
+  }
+
+  function setLightTheme() {
+    document.documentElement.setAttribute('data-theme', 'light');
+    themeIcon.textContent = '🌙';
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      setLightTheme();
+      localStorage.setItem('theme', 'light');
+    } else {
+      setDarkTheme();
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    setDarkTheme();
+  } else if (savedTheme === 'light') {
+    setLightTheme();
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setDarkTheme();
+  }
+
   // Search functionality
   const searchToggle = document.querySelector('.search-toggle');
   const searchOverlay = document.getElementById('searchOverlay');

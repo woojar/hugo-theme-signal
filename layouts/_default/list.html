@@ -13,7 +13,7 @@
       </header>
     {{ end }}
 
-{{ range .Paginator.Pages.ByDate.Reverse }}
+    {{ range .Paginator.Pages.ByDate.Reverse }}
       <article class="post-preview">
         <header class="post-preview-header">
           <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

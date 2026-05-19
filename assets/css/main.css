@@ -29,7 +29,11 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+:root {
     --text: #e2e8f0;
     --text-secondary: #94a3b8;
     --bg: #0f172a;
@@ -48,6 +52,10 @@
     background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
   }
 }
+
+/* ==========================================================================
+   Site Header & Navigation
+   ========================================================================== */
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -386,6 +394,10 @@ nav {
   font-weight: 600;
 }
 
+/* ==========================================================================
+   Main Content & Hero
+   ========================================================================== */
+
 .main-content {
   flex: 1;
   max-width: var(--max-width);
@@ -473,6 +485,10 @@ nav {
   margin-bottom: 2rem;
   display: inline-block;
 }
+
+/* ==========================================================================
+   Post Summaries & Previews
+   ========================================================================== */
 
 .post-summary,
 .post-preview {
@@ -572,78 +588,6 @@ div.post-preview-content > * + * {
   margin-top: 0.75rem;
 }
 
-.read-more {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--primary);
-  font-size: .9rem;
-  margin-top: .5rem;
-}
-
-.post-summary-content {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: .75rem;
-}
-
-.post-summary-content p {
-  margin-bottom: .75rem;
-}
-
-.post-summary-content ul,
-.post-summary-content ol {
-  margin: .5rem 0 .75rem 1.5rem;
-}
-
-.post-summary-content li {
-  margin-bottom: .35rem;
-}
-
-.post-summary-content br + br {
-  display: block;
-  content: '';
-  margin-top: 0.5rem;
-}
-
-.read-more {
-  display: inline-block;
-  font-weight: 600;
-  color: var(--primary);
-  font-size: .9rem;
-  margin-top: .5rem;
-}
-
-.post-summary-content p {
-  margin-bottom: 0.75rem;
-}
-
-.post-summary-content ul,
-.post-summary-content ol {
-  margin: 0.5rem 0 0.75rem 1.5rem;
-}
-
-.post-summary-content li {
-  margin-bottom: 0.35rem;
-}
-
-.post-preview-content {
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.post-preview-content p {
-  margin-bottom: 0.75rem;
-}
-
-.post-preview-content ul,
-.post-preview-content ol {
-  margin: 0.5rem 0 0.75rem 1.5rem;
-}
-
-.post-preview-content li {
-  margin-bottom: 0.35rem;
-}
-
 .post-summary ul,
 .post-preview ul {
   margin: 0.5rem 0 0.75rem 1.25rem;
@@ -709,6 +653,10 @@ div.post-preview-content > * + * {
   color: var(--primary-dark);
 }
 
+/* ==========================================================================
+   Post Single Page
+   ========================================================================== */
+
 .post {
   max-width: 800px;
   margin: 0 auto;
@@ -730,6 +678,10 @@ div.post-preview-content > * + * {
   line-height: 1.8;
   font-size: 1.05rem;
 }
+
+/* ==========================================================================
+   Post Typography & Code
+   ========================================================================== */
 
 .toc {
   background: var(--bg-card);
@@ -1101,6 +1053,10 @@ div.post-preview-content > * + * {
   color: var(--primary);
 }
 
+/* ==========================================================================
+   Site Footer
+   ========================================================================== */
+
 .site-footer {
   background: var(--bg-footer);
   color: rgba(255,255,255,0.7);
@@ -1147,7 +1103,9 @@ div.post-preview-content > * + * {
   color: rgba(255,255,255,0.7);
 }
 
-/* Add this at the end of the file, before the media queries */
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
 
 @media (max-width: 768px) {
   .header-container {

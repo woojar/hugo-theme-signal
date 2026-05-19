@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      HUGO_VERSION: 0.161.1
+      HUGO_VERSION: 0.123.7
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,6 +25,5 @@ jobs:
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
             && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
-      - name: Build example site
-        working-directory: ./exampleSite
-        run: hugo --source .. --themesDir ../themes
+      - name: Run tests
+        run: .github/scripts/test.sh
