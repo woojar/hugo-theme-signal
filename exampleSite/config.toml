@@ -5,6 +5,8 @@ theme = "signal"
 [params]
   author = "Your Name"
   description = "A technical blog powered by the Signal Hugo theme"
+  footerTitle = "My Blog — Signal Theme Demo"
+  footerDescription = "A modern Hugo blog theme for technical writers."
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -15,6 +17,9 @@ theme = "signal"
 
 [params.share]
   enable = true
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/your-username"
 
 [menus]
   [[menus.main]]
