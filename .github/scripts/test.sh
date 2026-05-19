@@ -98,4 +98,44 @@ else
     echo -e "${GREEN}✓${NC} All external links have security attributes"
 fi
 
+# Test 8: Check JS attribute usage has CSS selector support
+echo -e "\n🔍 Test 8: Checking JS/CSS consistency..."
+if grep -q 'setAttribute.*\bdata-theme\b' layouts/partials/scripts.html 2>/dev/null; then
+    if ! grep -q '\[data-theme=' assets/css/main.css; then
+        echo -e "${RED}✗${NC} JS uses data-theme but CSS missing [data-theme] selectors"
+        exit 1
+    fi
+    echo -e "${GREEN}✓${NC} JS/CSS attribute consistency check passed"
+fi
+
+# Test 9: Check for required CSS selectors used by JavaScript
+echo -e "\n🎯 Test 9: Checking required CSS selectors..."
+REQUIRED_SELECTORS=(
+    "\.back-to-top"
+    "\.theme-toggle"
+    "\.nav-toggle"
+    "\.nav-menu"
+    "\.search-toggle"
+    "\.search-overlay"
+    "\.reading-progress"
+)
+for selector in "${REQUIRED_SELECTORS[@]}"; do
+    if ! grep -q "$selector" assets/css/main.css; then
+        echo -e "${RED}✗${NC} Missing CSS for JS selector: $selector"
+        exit 1
+    fi
+done
+echo -e "${GREEN}✓${NC} All required CSS selectors present"
+
+# Test 10: Check template parameter usage consistency
+echo -e "\n📋 Test 10: Checking template parameter references..."
+PARAMS_USED=$(grep -roh '\.Site\.Params\.[^ )"]*' layouts/ | sort -u | sed 's/\.Site\.Params\.//' | cut -d'.' -f1)
+KNOWN_PARAMS="author description logoIcon comments giscus authorBio social newsletter share analytics"
+for param in $PARAMS_USED; do
+    if ! echo "$KNOWN_PARAMS" | grep -qw "$param"; then
+        echo -e "${YELLOW}⚠${NC} Template uses param '$param' - consider documenting in README"
+    fi
+done
+echo -e "${GREEN}✓${NC} Template parameter check complete"
+
 echo -e "\n${GREEN}✅ All tests passed!${NC}"
