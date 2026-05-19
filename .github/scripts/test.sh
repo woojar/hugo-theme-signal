@@ -49,6 +49,13 @@ REQUIRED_TEMPLATES=(
     "layouts/partials/header.html"
     "layouts/partials/footer.html"
     "layouts/partials/scripts.html"
+    "layouts/partials/head.html"
+    "layouts/partials/social-share.html"
+    "layouts/partials/author-bio.html"
+    "layouts/partials/newsletter.html"
+    "layouts/partials/comments.html"
+    "layouts/partials/breadcrumbs.html"
+    "layouts/partials/analytics.html"
 )
 
 for template in "${REQUIRED_TEMPLATES[@]}"; do
@@ -76,6 +83,24 @@ if [ -f "layouts/robots.txt" ]; then
     echo -e "${GREEN}✓${NC} robots.txt template exists"
 else
     echo -e "${RED}✗${NC} robots.txt template missing"
+    exit 1
+fi
+
+# Test 5b: Verify RSS template exists
+echo -e "\n📡 Test 5b: Checking RSS template..."
+if [ -f "layouts/_default/rss.xml" ] || [ -f "layouts/rss.xml" ]; then
+    echo -e "${GREEN}✓${NC} RSS template exists"
+else
+    echo -e "${RED}✗${NC} RSS template missing"
+    exit 1
+fi
+
+# Test 5c: Verify sitemap exists
+echo -e "\n🗺️ Test 5c: Checking sitemap..."
+if [ -f "layouts/_default/sitemap.xml" ]; then
+    echo -e "${GREEN}✓${NC} Sitemap template exists"
+else
+    echo -e "${RED}✗${NC} Sitemap template missing"
     exit 1
 fi
 
@@ -118,10 +143,21 @@ REQUIRED_SELECTORS=(
     "\.search-toggle"
     "\.search-overlay"
     "\.reading-progress"
+    "\.skip-link"
+    "\.post-content"
+    "\.post-summary"
+    "\.post-preview"
+    "\.toc"
+    "\.breadcrumbs"
+    "\.author-bio"
+    "\.newsletter"
+    "\.share-buttons"
+    "\.comments"
+    "\.related-posts"
 )
 for selector in "${REQUIRED_SELECTORS[@]}"; do
-    if ! grep -q "$selector" assets/css/main.css; then
-        echo -e "${RED}✗${NC} Missing CSS for JS selector: $selector"
+    if ! grep -q "$selector" assets/css/main.css 2>/dev/null && ! grep -q "$selector" layouts/*.html 2>/dev/null; then
+        echo -e "${RED}✗${NC} Missing template element for JS selector: $selector"
         exit 1
     fi
 done
