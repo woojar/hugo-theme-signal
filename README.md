@@ -1,4 +1,4 @@
-# Theme.toml – Signal
+# Signal
 
 A modern Hugo blog theme for technical writers and engineers.
 
@@ -75,6 +75,9 @@ title = "Your Site"
   author = "Your Name"
   description = "What this site is about"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [menus]
   [[menus.main]]
     name = "Home"
@@ -140,6 +143,15 @@ title = "Your Site"
   id = "G-XXXXXXXXXX"
 ```
 
+### Footer Customization
+
+```toml
+[params]
+  footerTitle = "Site Name"
+  footerDescription = "Short description for the footer."
+  disableBreadcrumb = true  # Hide breadcrumbs on pages
+```
+
 ## Content
 
 ### Posts
@@ -176,6 +188,22 @@ Override CSS variables in your site's custom stylesheet or by adding to `hugo.to
 | `--bg-header` | `#0f172a` |
 | `--code-bg` | `#1e293b` |
 | `--radius` | `8px` |
+
+## Using the Example Site
+
+The `exampleSite` directory contains a complete demo site you can run locally to explore the theme:
+
+```bash
+hugo server -D -s exampleSite -t ../..
+```
+
+This starts a local server (usually at `http://localhost:1313`) with sample content including:
+- Homepage listing posts
+- About page
+- Sample posts demonstrating dark mode and Giscus comments
+- Dark mode toggle test
+
+The example uses `theme = "signal"` and includes a minimal config with author bio and social sharing enabled.
 
 ## License
 

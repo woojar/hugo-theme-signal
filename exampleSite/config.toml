@@ -6,6 +6,9 @@ theme = "signal"
   author = "Your Name"
   description = "A technical blog powered by the Signal Hugo theme"
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params.authorBio]
   enable = true
   avatar = ""

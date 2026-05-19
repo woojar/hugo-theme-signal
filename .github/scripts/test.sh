@@ -166,7 +166,7 @@ echo -e "${GREEN}✓${NC} All required CSS selectors present"
 # Test 10: Check template parameter usage consistency
 echo -e "\n📋 Test 10: Checking template parameter references..."
 PARAMS_USED=$(grep -roh '\.Site\.Params\.[^ )"]*' layouts/ | sort -u | sed 's/\.Site\.Params\.//' | cut -d'.' -f1)
-KNOWN_PARAMS="author description logoIcon comments giscus authorBio social newsletter share analytics"
+KNOWN_PARAMS="author description logoIcon comments giscus authorBio social newsletter share analytics disableBreadcrumb footerDescription footerTitle"
 for param in $PARAMS_USED; do
     if ! echo "$KNOWN_PARAMS" | grep -qw "$param"; then
         echo -e "${YELLOW}⚠${NC} Template uses param '$param' - consider documenting in README"
