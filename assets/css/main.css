@@ -23,9 +23,44 @@
   --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
 }
 
-@font-face {
-  font-family: 'System UI';
-  font-display: swap;
+@supports (color: color(display-p3 1 1 1)) {
+  /* Color space support placeholder */
+}
+
+/* Forced dark theme (via data-theme attribute) */
+[data-theme="dark"] {
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #2563eb;
+  --accent: #34d399;
+  --accent-light: #6ee7b7;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --bg: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #020617;
+  --bg-footer: #020617;
+  --border: #334155;
+  --code-bg: #020617;
+  --code-text: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.3);
+  --glow-primary: rgba(59, 130, 246, 0.25);
+}
+
+[data-theme="dark"] body {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+}
+
+[data-theme="light"] body {
+  background-image: radial-gradient(circle at 1px 1px, var(--border) 0.5px, transparent 0);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  [data-theme="dark"] {
+    /* Future-proof color space adjustments */
+  }
 }
 
 @media (prefers-color-scheme: dark) {
