@@ -26,6 +26,14 @@ theme = "signal"
     url = "/posts/"
     weight = 2
   [[menus.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+  [[menus.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 4
+  [[menus.main]]
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 5
