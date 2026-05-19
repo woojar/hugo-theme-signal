@@ -53,6 +53,27 @@
   background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
 }
 
+[data-theme="light"] {
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --accent: #10b981;
+  --accent-light: #34d399;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --bg: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-header: #0f172a;
+  --bg-footer: #0f172a;
+  --border: #e2e8f0;
+  --code-bg: #1e293b;
+  --code-text: #e2e8f0;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
+  --glow-primary: rgba(37, 99, 235, 0.15);
+}
+
 [data-theme="light"] body {
   background-image: radial-gradient(circle at 1px 1px, var(--border) 0.5px, transparent 0);
 }
@@ -64,11 +85,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-/* ==========================================================================
-   Base Styles
-   ========================================================================== */
-
-:root {
+  :root:not([data-theme]) {
     --text: #e2e8f0;
     --text-secondary: #94a3b8;
     --bg: #0f172a;
@@ -83,7 +100,8 @@
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.3);
     --glow-primary: rgba(59, 130, 246, 0.25);
   }
-  body {
+  :root:not([data-theme]) ~ body,
+  body:not([data-theme]) {
     background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
   }
 }
