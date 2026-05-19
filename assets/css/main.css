@@ -588,28 +588,34 @@ nav {
 
 .post-summary-content {
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: .75rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
 }
 
 .post-summary-content p {
-  margin-bottom: .75rem;
+  margin: 0 0 .75rem 0;
+}
+
+.post-summary-content br {
+  display: block;
+  margin: 0.5rem 0;
+  content: '';
+}
+
+.post-summary-content > p:first-child,
+.post-summary-content > p:last-child {
+  margin: 0;
 }
 
 .post-summary-content > *:first-child { margin-top: 0; }
 .post-summary-content > *:last-child { margin-bottom: 0; }
-.post-summary-content > * + * { margin-top: 0.5rem; }
+.post-summary-content > * + * { margin-top: 0.75rem; }
 .post-summary-content ul,
 .post-summary-content ol {
   margin: .5rem 0 .75rem 1.5rem;
 }
 .post-summary-content li {
   margin-bottom: .35rem;
-}
-.post-summary-content br {
-  display: block;
-  content: '';
-  margin: 0.5rem 0;
 }
 
 .post-summary ul,

@@ -30,6 +30,12 @@ A modern Hugo blog theme for technical writers and engineers.
 
 ## Installation
 
+### Hugo Version
+
+**Recommended:** Hugo **v0.134.0 or later** for proper `.Summary` rendering with paragraph tags.
+
+**Known Issue:** Hugo versions before 0.134.0 may output `.Summary` as plain text without `<p>` tags, which can affect the styling of post summaries on listing pages.
+
 ### As Hugo Module (recommended)
 
 ```bash
