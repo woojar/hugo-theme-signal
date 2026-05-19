@@ -23,10 +23,6 @@
   --font-mono: 'SF Mono', 'Fira Code', 'Consolas', monospace;
 }
 
-@supports (color: color(display-p3 1 1 1)) {
-  /* Color space support placeholder */
-}
-
 /* Forced dark theme (via data-theme attribute) */
 [data-theme="dark"] {
   --primary: #3b82f6;
@@ -590,67 +586,36 @@ nav {
   margin-bottom: 0.75rem;
 }
 
-.post-summary p,
-.post-preview p {
+.post-summary-content {
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: .75rem;
 }
 
-div.post-summary-content > *:first-child { margin-top: 0; }
-div.post-summary-content > *:last-child { margin-bottom: 0; }
-
-.post-summary-content,
-.post-preview-content {
-  color: var(--text-secondary);
-  line-height: 1.6;
+.post-summary-content p {
   margin-bottom: .75rem;
 }
 
-.post-summary-content p,
-.post-preview-content p {
-  margin-bottom: .75rem;
-}
-
+.post-summary-content > *:first-child { margin-top: 0; }
+.post-summary-content > *:last-child { margin-bottom: 0; }
+.post-summary-content > * + * { margin-top: 0.5rem; }
 .post-summary-content ul,
-.post-summary-content ol,
-.post-preview-content ul,
-.post-preview-content ol {
+.post-summary-content ol {
   margin: .5rem 0 .75rem 1.5rem;
 }
-
-.post-summary-content li,
-.post-preview-content li {
+.post-summary-content li {
   margin-bottom: .35rem;
 }
-
-.post-summary-content br,
-.post-preview-content br {
+.post-summary-content br {
   display: block;
   content: '';
   margin: 0.5rem 0;
-}
-
-div.post-summary-content,
-div.post-preview-content {
-  line-height: 1.8;
-}
-
-div.post-summary-content > * + *,
-div.post-preview-content > * + * {
-  margin-top: 0.75rem;
 }
 
 .post-summary ul,
 .post-preview ul {
   margin: 0.5rem 0 0.75rem 1.25rem;
   color: var(--text-secondary);
-}
-
-.post-summary li,
-.post-preview li {
-  margin-bottom: 0.35rem;
-  line-height: 1.5;
 }
 
 .post-meta time,
