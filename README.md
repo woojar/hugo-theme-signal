@@ -2,6 +2,10 @@
 
 A modern Hugo blog theme for technical writers and engineers.
 
+## Demo
+
+[https://woojar.com](https://woojar.com)
+
 ## Features
 
 - **Dark mode** — with system-preference detection and manual toggle + localStorage persistence
