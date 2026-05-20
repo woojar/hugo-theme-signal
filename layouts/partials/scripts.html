@@ -19,20 +19,20 @@
     } else {
       backToTop.classList.remove('visible');
     }
-  }, 100));
+  }, 100), { passive: true });
 
   backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Reading progress - throttled
+  // Reading progress - throttled, passive
   const readingProgress = document.getElementById('readingProgress');
   window.addEventListener('scroll', throttle(() => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = (scrollTop / docHeight) * 100;
     readingProgress.style.width = progress + '%';
-  }, 50));
+  }, 50), { passive: true });
 
   // Nav toggle
   const navToggle = document.querySelector('.nav-toggle');
@@ -140,25 +140,40 @@
     await loadSearchIndex();
     searchOverlay.classList.add('active');
     searchInput.focus();
+    document.body.setAttribute('aria-hidden', 'true');
+    document.getElementById('main').setAttribute('aria-hidden', 'true');
   });
 
-  searchClose.addEventListener('click', () => {
+  function closeSearch() {
     searchOverlay.classList.remove('active');
-  });
+    document.body.removeAttribute('aria-hidden');
+    document.getElementById('main').removeAttribute('aria-hidden');
+  }
+
+  searchClose.addEventListener('click', closeSearch);
 
   searchOverlay.addEventListener('click', (e) => {
     if (e.target === searchOverlay) {
-      searchOverlay.classList.remove('active');
+      closeSearch();
     }
   });
 
-  searchInput.addEventListener('input', (e) => {
+  // Debounce search input
+  function debounce(fn, delay) {
+    let timeout;
+    return function(...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  searchInput.addEventListener('input', debounce((e) => {
     performSearch(e.target.value);
-  });
+  }, 150));
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-      searchOverlay.classList.remove('active');
+      closeSearch();
     }
     if (e.key === '/' && !searchOverlay.classList.contains('active') &&
         !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
