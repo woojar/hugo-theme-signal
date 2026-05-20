@@ -477,9 +477,29 @@ nav {
   text-align: center;
   padding: 4rem 1rem 3rem;
   position: relative;
-}
+   }
 
-.hero-content h1 {
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    text-align: center;
+    list-style: none;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 0.5rem;
+    border-bottom: none;
+  }
+
+  .nav-menu a.active {
+    border-bottom: none;
+    color: var(--accent-light);
+  }
+
+  .hero-content h1 {
   font-size: 2.75rem;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -1206,6 +1226,26 @@ nav {
     border-top: 1px solid var(--border);
     list-style: none;
     z-index: 99;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    text-align: center;
+    list-style: none;
+  }
+
+  .nav-menu a {
+    display: block;
+    padding: 0.5rem;
+    border-bottom: none;
+  }
+
+  .nav-menu a.active {
+    border-bottom: none;
+    color: var(--accent-light);
   }
 
   .hero-content h1 {
