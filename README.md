@@ -155,15 +155,7 @@ title = "Your Site"
 [params]
   footerTitle = "Site Name"
   footerDescription = "Short description for the footer."
-  footerLicense = "All content CC BY-NC-SA 4.0."      # optional, defaults to "All code samples MIT Licensed."
   disableBreadcrumb = true  # Hide breadcrumbs on pages
-
-[params.footerPoweredBy]
-  enable = true                                       # opt-in, defaults to false
-  prefix = "Powered by"                               # label before the Hugo link
-  themePrefix = "Theme by"                            # label before the theme author link
-  themeURL = "https://github.com/woojar/hugo-theme-signal"
-  themeAuthor = "woojar"
 ```
 
 ## Content
