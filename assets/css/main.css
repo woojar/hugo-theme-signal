@@ -558,6 +558,29 @@ nav {
   display: inline-block;
 }
 
+/* View all posts CTA */
+.view-all-posts {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 0.65rem 1.5rem;
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+  transition: background 0.2s, color 0.2s;
+}
+
+.view-all-btn:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
 /* ==========================================================================
    Post Summaries & Previews
    ========================================================================== */

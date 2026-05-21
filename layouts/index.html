@@ -25,5 +25,9 @@
     {{ end }}
   </section>
 
+  <div class="view-all-posts">
+    <a href="{{ "posts/" | relURL }}" class="view-all-btn">← View all posts</a>
+  </div>
+
   {{ partial "newsletter.html" . }}
 {{ end }}
