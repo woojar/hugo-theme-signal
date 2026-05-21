@@ -6,9 +6,10 @@
     </div>
     <div class="footer-section fade-in">
       <h3>Connect</h3>
-      <p>{{ .Site.Params.author }}
-        {{- range .Site.Params.social }}
-          {{ if .url }} · <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>{{ end }}
+      <p>
+        {{- $social := .Site.Params.social -}}
+        {{- range $i, $s := $social -}}
+          {{- if $s.url }}<a href="{{ $s.url }}" target="_blank" rel="noopener noreferrer">{{ $s.name }}</a>{{- if lt $i (sub (len $social) 1) }}, {{ end }}{{- end }}
         {{- end }}
       </p>
     </div>
@@ -18,7 +19,15 @@
     </div>
   </div>
   <div class="footer-bottom fade-in">
-    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. All code samples MIT Licensed.</p>
-    <p>Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>. Theme by <a href="https://github.com/woojar/hugo-theme-signal" target="_blank" rel="noopener noreferrer">woojar</a>.</p>
+    <p>&copy; {{ now.Format "2006" }} {{ .Site.Title }}. {{ .Site.Params.footerLicense | default "All code samples MIT Licensed." }}</p>
+    {{- $p := .Site.Params.footerPoweredBy -}}
+    {{- if and $p $p.enable -}}
+    <p>
+      {{ $p.prefix | default "Powered by" }}
+      <a href="https://gohugo.io/" target="_blank" rel="noopener noreferrer">Hugo</a>.
+      {{ $p.themePrefix | default "Theme by" }}
+      <a href="{{ $p.themeURL | default "https://github.com/woojar/hugo-theme-signal" }}" target="_blank" rel="noopener noreferrer">{{ $p.themeAuthor | default "woojar" }}</a>.
+    </p>
+    {{- end }}
   </div>
 </footer>

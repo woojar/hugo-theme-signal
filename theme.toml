@@ -39,3 +39,11 @@ version = "1.0.0"
   # Post meta
   words = "words"
   min_read = "min read"
+
+  # Footer branding (disabled by default — site enables it)
+  [params.footerPoweredBy]
+  enable = false
+  prefix = "Powered by"
+  themePrefix = "Theme by"
+  themeURL = "https://github.com/woojar/hugo-theme-signal"
+  themeAuthor = "woojar"
