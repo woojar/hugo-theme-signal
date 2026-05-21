@@ -39,3 +39,6 @@ version = "1.0.0"
   # Post meta
   words = "words"
   min_read = "min read"
+
+  # Footer
+  footerLicense = "All code samples MIT Licensed."
